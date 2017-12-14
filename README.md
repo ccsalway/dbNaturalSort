@@ -3,7 +3,7 @@ Calculates a string from another field value that can be used for Natural Sortin
 
 This has the following processes:
 
-    A. Flags each character type - letter, number, non-alphanumeric - with a sort order byte (saves padding).
+    A. Flags each character type - letter, number, non-alphanumeric - with a sort order byte.
     B. Converts each character into its ascii number and then converts to hex.
     C. Groups individual numbers into one number - eg abc123 would be a,b,c,123 - and converts to hex.
 
