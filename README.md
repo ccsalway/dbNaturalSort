@@ -1,21 +1,26 @@
 # dbNaturalSort
 Calculates a string from another field value that can be used for Natural Sorting
 
-A byte stores the hex value (0 to f) of a letter or number. Since a letter is two bytes, the minimum byteSize is 2.
+This has two processes:
 
-    2 bytes = 00 - ff  (max number is 255)
-    3 bytes = 000 - fff (max number is 4095)
-    4 bytes = 0000 - ffff (max number is 65535)
+    A. Converts each character into its ascii number and then converts to hex.
+    B. Groups individual numbers into one number - eg abc123 would be a,b,c,123 - and converts to hex
 
 Example I:
 
-    dog123 = 64,6F,67,7B and thus byteSize >= 2.
-    dog280 = 64,6F,67,118 and thus byteSize >= 3.
+    dog123 = d:64,o:6F,g:67,123:7B and thus byteSize >= 2.
+    dog280 = d:64,o:6F,g:67,280:118 and thus byteSize >= 3.
+
+A byte stores the hex value (0 to f) of a letter or number. Since a letter is two bytes, the minimum byteSize is 2.
+
+    2 bytes = 00 - ff  (any letter and a max number of 255)
+    3 bytes = 000 - fff (any letter and a max number of 4095)
+    4 bytes = 0000 - ffff (any letter and a max number of 65535)
 
 Example II:
 
-    The String, "There are 1000000 spots on a dalmatian" requires a byteSize that can store the number '1000000'
-    1000000 in hex is 'f4240' and thus the byteSize must be at least 5 (f4240 is 5 characters)
+    "There are 1000000 spots on a dalmatian" requires a byteSize that can store the number '1000000'
+    1000000 in hex is 'f4240' and thus the byteSize must be at least 5 (f4240 has 5 characters)
 
 The dbColumn size to store the NaturalSortString is calculated as: `originalStringColumnSize x byteSize + 1` (The extra '1' is a marker for String type - Letter, Number, Symbol). Thus, if the originalStringColumn is varchar(32) and the byteSize is 5: 
 `NaturalSortStringColumnSize = 32 x 5 + 1` = varchar(161)
