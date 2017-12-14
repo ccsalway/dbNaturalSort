@@ -23,7 +23,7 @@ Example II:
     "There are 1000000 spots on a dalmatian" requires a byteSize that can store the number '1000000'
     1000000 in hex is 'f4240' and thus the byteSize must be at least 5 (f4240 has 5 characters)
 
-The dbColumn size to store the NaturalSortString is calculated as: `originalStringColumnSize x byteSize + 1` (The extra '1' is a marker for String type - Letter, Number, Symbol). Thus, if the originalStringColumn is varchar(32) and the byteSize is 5: 
+The dbColumn size to store the NaturalSortString is calculated as: `originalStringColumnSize x byteSize + 1` (The extra '1' is a sort order byte for the first character - alpha, numeric, non-alphanumeric). Thus, if the originalStringColumn is varchar(32) and the byteSize is 5: 
 `NaturalSortStringColumnSize = 32 x 5 + 1` = varchar(161)
 
 **The byteSize must be the same for all NaturalSortStrings created in the same table.**
