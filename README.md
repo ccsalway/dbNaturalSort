@@ -1,7 +1,7 @@
 # dbNaturalSort
 Calculates a string from another field value that can be used for Natural Sorting
 
-This has two processes:
+This has the following processes:
 
     A. Flags each character type - letter, number, non-alphanumeric - with a sort order byte (saves padding).
     B. Converts each character into its ascii number and then converts to hex.
