@@ -12,7 +12,7 @@ Example I:
     dog123 = d:64,o:6F,g:67,123:7B and thus byteSize >= 2.
     dog280 = d:64,o:6F,g:67,280:118 and thus byteSize >= 3.
 
-A byte stores the hex value (0 to f) of a letter or number. Since a letter is two bytes, the minimum byteSize is 2.
+A byte stores the hex value (0 to f) of a letter, number or non-alphanumeric. Since the ascii table requires two bytes (255 positions), the minimum byteSize is 2.
 
     2 bytes = 00 - ff  (any letter and a max number of 255)
     3 bytes = 000 - fff (any letter and a max number of 4095)
