@@ -1,7 +1,3 @@
-package library.database;
-
-import library.common.StringUtils;
-
 /**
  * Creates a string that allows natural sorting in a SQL database
  * eg, 0 1 1a 2 3 3a 10 100 a a1 a1a1 b
@@ -83,7 +79,7 @@ public class NaturalSortString {
         int i = Integer.parseInt(s);
         if (i >= (Math.pow(16, byteSize)))
             throw new Exception("naturalsort_bytesize_exceeded");
-        out.append(StringUtils.padZerosLeft(Integer.toHexString(i), byteSize));
+        out.append(padZerosLeft(Integer.toHexString(i), byteSize));
     }
 
     private void addCharacter(char c) {
@@ -101,9 +97,16 @@ public class NaturalSortString {
         else if (c >= 253 && c <= 255) // set accented y to y
             c = 'y';
 
-        out.append(StringUtils.padZerosLeft(Integer.toHexString(c), byteSize));
+        out.append(padZerosLeft(Integer.toHexString(c), byteSize));
     }
+    
+    private String padZerosLeft(String s, int n) {
+        if (n - s.length() == 0)
+            return s;
 
+        return String.format("%0" + (n - s.length()) + "d%s", 0, s);
+    }
+    
     @Override
     public String toString() {
         return out.toString();
