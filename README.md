@@ -1,6 +1,10 @@
 # dbNaturalSort
 Calculates a string from another field value that can be used for Natural Sorting
 
+Usage:
+
+    String naturalSortString = new NaturalSortString("The string to convert including 123 as a number.", 5).toString();
+
 This has the following processes:
 
     A. Flags each character type - letter, number, non-alphanumeric - with a sort order byte.
